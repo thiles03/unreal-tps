@@ -1,4 +1,4 @@
-# Unreal Engine - Third Person Survival
+# Third Person Survival
 
 ### General Info
 Protoype for a survival game
