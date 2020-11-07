@@ -1,4 +1,10 @@
-# unreal-tps
-Unreal Engine project - third person survival.
+# Unreal Engine - Third Person Survival
 
-Mechanics programmed with blueprint visual graphs and C++.
+### General Info
+Protoype for a survival game
+
+### Technologies
+Created with:
+* Unreal Engine
+* Blueprint Visual Scripting
+* Visual Studio Code
