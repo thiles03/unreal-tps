@@ -1,0 +1,11 @@
+{
+	"files.exclude": {
+		"D:/Unreal/Projects/ThirdPersonSurvival/.git": true,
+		"D:/Unreal/Projects/ThirdPersonSurvival/.vs": true,
+		"D:/Unreal/Projects/ThirdPersonSurvival/.vscode": true,
+		"D:/Unreal/Projects/ThirdPersonSurvival/Content": true,
+		"D:/Unreal/Projects/ThirdPersonSurvival/DerivedDataCache": true,
+		"D:/Unreal/Projects/ThirdPersonSurvival/Intermediate": true,
+		"D:/Unreal/Projects/ThirdPersonSurvival/Saved": true
+	}
+}
