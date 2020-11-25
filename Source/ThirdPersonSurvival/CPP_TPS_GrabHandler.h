@@ -26,9 +26,10 @@ private:
 	UInputComponent* Input = nullptr;
 
 	void Grab();
-	void Drop();
+	void Release();
 	void FindPhysicsHandle();
 	void SetupInputComponent();
 	FHitResult GetFirstPhysicsBodyInReach() const;
-		
+	FVector GetPlayerInteractPoint() const;
+	FVector GetPlayerViewPos() const;
 };
