@@ -31,6 +31,7 @@ void ACPP_TPS_PlayerCharacter::Tick(float DeltaTime)
 void ACPP_TPS_PlayerCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACPP_TPS_PlayerCharacter::Jump);
 	PlayerInputComponent->BindAction("FireWeapon", IE_Pressed, this, &ACPP_TPS_PlayerCharacter::Fire);
 	PlayerInputComponent->BindAction("FireWeapon", IE_Released, this, &ACPP_TPS_PlayerCharacter::CheckFire);
 }
