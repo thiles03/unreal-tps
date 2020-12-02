@@ -29,4 +29,9 @@ private:
 	USpringArmComponent *SpringArm = nullptr;
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent *Camera = nullptr;
+
+	APlayerController *PlayerControllerRef;
+
+	void Fire();
+	void CheckFire();
 };
