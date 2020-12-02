@@ -18,8 +18,6 @@ ACPP_TPS_PlayerCharacter::ACPP_TPS_PlayerCharacter()
 void ACPP_TPS_PlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
-	PlayerControllerRef = Cast<APlayerController>(GetController());
 }
 
 
@@ -33,16 +31,18 @@ void ACPP_TPS_PlayerCharacter::Tick(float DeltaTime)
 void ACPP_TPS_PlayerCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ACPP_TPS_PlayerCharacter::Fire);
-	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ACPP_TPS_PlayerCharacter::CheckFire);
+	PlayerInputComponent->BindAction("FireWeapon", IE_Pressed, this, &ACPP_TPS_PlayerCharacter::Fire);
+	PlayerInputComponent->BindAction("FireWeapon", IE_Released, this, &ACPP_TPS_PlayerCharacter::CheckFire);
 }
 
 void ACPP_TPS_PlayerCharacter::Fire() 
 {
 	UE_LOG(LogTemp, Warning, TEXT("fire"));
+	IsFiring = true;
 }
 
 void ACPP_TPS_PlayerCharacter::CheckFire() 
 {
 	UE_LOG(LogTemp, Warning, TEXT("check fire"));
+	IsFiring = false;
 }

@@ -30,7 +30,12 @@ private:
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent *Camera = nullptr;
 
-	APlayerController *PlayerControllerRef;
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "States", meta = (AllowPrivateAccess = "true"))
+	bool IsFiring = false;
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "States", meta = (AllowPrivateAccess = "true"))
+	bool IsAiming = false;
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "States", meta = (AllowPrivateAccess = "true"))
+	bool IsSprinting = false;
 
 	void Fire();
 	void CheckFire();
