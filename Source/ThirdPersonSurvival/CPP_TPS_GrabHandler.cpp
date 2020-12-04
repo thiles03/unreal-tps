@@ -30,6 +30,27 @@ void UCPP_TPS_GrabHandler::TickComponent(float DeltaTime, ELevelTick TickType, F
 	}
 }
 
+// Check for physics handle component
+void UCPP_TPS_GrabHandler::FindPhysicsHandle()
+{
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+	if (!PhysicsHandle)
+	{
+		UE_LOG(LogTemp, Error, TEXT("No physics handle on %s!"), *GetOwner()->GetName());
+	}
+}
+
+// Check for input component and bind input mappings
+void UCPP_TPS_GrabHandler::SetupInputComponent()
+{
+	Input = GetOwner()->FindComponentByClass<UInputComponent>();
+	if (Input)
+	{
+		Input->BindAction("Interact", IE_Pressed, this, &UCPP_TPS_GrabHandler::Grab); // Grab
+		Input->BindAction("Interact", IE_Released, this, &UCPP_TPS_GrabHandler::Release); // Release
+	}
+}
+
 // Returns line trace end
 FVector UCPP_TPS_GrabHandler::GetPlayerInteractPoint() const
 {
@@ -46,6 +67,7 @@ FVector UCPP_TPS_GrabHandler::GetPlayerInteractPoint() const
 	return LineTraceEnd;
 }
 
+// Returns player viewpoint world position
 FVector UCPP_TPS_GrabHandler::GetPlayerViewPos() const
 {
 	FVector PlayerViewpointLocation;
@@ -59,6 +81,7 @@ FVector UCPP_TPS_GrabHandler::GetPlayerViewPos() const
 	return PlayerViewpointLocation;
 }
 
+// Returns physics body hit by line trace
 FHitResult UCPP_TPS_GrabHandler::GetFirstPhysicsBodyInReach() const
 {
 	FHitResult Hit;
@@ -76,6 +99,7 @@ FHitResult UCPP_TPS_GrabHandler::GetFirstPhysicsBodyInReach() const
 	return Hit;
 }
 
+// Grab hit physics body
 void UCPP_TPS_GrabHandler::Grab()
 {
 	FHitResult HitResult =  GetFirstPhysicsBodyInReach();
@@ -93,29 +117,9 @@ void UCPP_TPS_GrabHandler::Grab()
 	}
 }
 
+// Release grabbed physics body
 void UCPP_TPS_GrabHandler::Release()
 {
 	if (!PhysicsHandle) {return;}
 	PhysicsHandle->ReleaseComponent();
-}
-
-void UCPP_TPS_GrabHandler::FindPhysicsHandle()
-{
-	// Check for physics handle component
-	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	if (!PhysicsHandle)
-	{
-		UE_LOG(LogTemp, Error, TEXT("No physics handle on %s!"), *GetOwner()->GetName());
-	}
-}
-
-void UCPP_TPS_GrabHandler::SetupInputComponent()
-{
-	// Check for input component
-	Input = GetOwner()->FindComponentByClass<UInputComponent>();
-	if (Input)
-	{
-		Input->BindAction("Interact", IE_Pressed, this, &UCPP_TPS_GrabHandler::Grab); // Grab
-		Input->BindAction("Interact", IE_Released, this, &UCPP_TPS_GrabHandler::Release); // Release
-	}
 }
