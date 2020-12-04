@@ -2,7 +2,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 
-// Sets default values
+// Set default values
 ACPP_TPS_PlayerCharacter::ACPP_TPS_PlayerCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -20,14 +20,13 @@ void ACPP_TPS_PlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
-
 // Called every frame
 void ACPP_TPS_PlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-// Called to bind functionality to input
+// Bind functionality to input
 void ACPP_TPS_PlayerCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -36,13 +35,15 @@ void ACPP_TPS_PlayerCharacter::SetupPlayerInputComponent(UInputComponent *Player
 	PlayerInputComponent->BindAction("FireWeapon", IE_Released, this, &ACPP_TPS_PlayerCharacter::CheckFire);
 }
 
-void ACPP_TPS_PlayerCharacter::Fire() 
+// Fire weapon
+void ACPP_TPS_PlayerCharacter::Fire()
 {
 	UE_LOG(LogTemp, Warning, TEXT("fire"));
 	IsFiring = true;
 }
 
-void ACPP_TPS_PlayerCharacter::CheckFire() 
+// Stop firing weapon
+void ACPP_TPS_PlayerCharacter::CheckFire()
 {
 	UE_LOG(LogTemp, Warning, TEXT("check fire"));
 	IsFiring = false;

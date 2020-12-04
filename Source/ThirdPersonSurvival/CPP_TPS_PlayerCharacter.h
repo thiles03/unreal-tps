@@ -13,11 +13,11 @@ class THIRDPERSONSURVIVAL_API ACPP_TPS_PlayerCharacter : public ACharacter
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	ACPP_TPS_PlayerCharacter();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	// Called to bind functionality to input
+
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
@@ -25,14 +25,19 @@ protected:
 	virtual void BeginPlay() override;
 	
 private:
+	// COMPONENTS
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent *SpringArm = nullptr;
+
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent *Camera = nullptr;
 
+	// VARIABLES
 	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "States", meta = (AllowPrivateAccess = "true"))
 	bool IsFiring = false;
 
+	// FUNCTIONS
 	void Fire();
+	
 	void CheckFire();
 };

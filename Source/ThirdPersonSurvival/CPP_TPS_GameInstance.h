@@ -8,5 +8,4 @@ UCLASS()
 class THIRDPERSONSURVIVAL_API UCPP_TPS_GameInstance : public UGameInstance
 {
 	GENERATED_BODY()
-	
 };

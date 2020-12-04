@@ -8,5 +8,4 @@ UCLASS()
 class THIRDPERSONSURVIVAL_API ACPP_TPS_GameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
 };
